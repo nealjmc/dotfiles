@@ -1,10 +1,11 @@
 # set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
-Import-Module oh-my-posh
 Import-Module posh-git
-$omp_config = Join-Path $PSScriptRoot ".\neal.omp.json"
-oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
+$omp_config = ".\catppuccin.omp.json"
+oh-my-posh init pwsh --config $omp_config | Invoke-Expression
+oh-my-posh init pwsh --config "C:\Users\User\AppData\Local\Programs\oh-my-posh\themes\$omp_config" | Invoke-Expression
+
 
 Import-Module -Name Terminal-Icons
 

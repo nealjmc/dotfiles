@@ -9,6 +9,10 @@
 
 -   [Nerd Fonts - Hack.zip - All of em](https://github.com/ryanoasis/nerd-fonts/releases/tag/v2.3.3)
 
+## Windows Terminal
+
+-   Copy terminal/settings.json to Win Terminal settings
+
 ## PowerShell setup (Windows)
 
 -   [Powershell 7](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3) - Better than the default
@@ -32,9 +36,21 @@ irm get.scoop.sh | iex
 
 scoop install https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/oh-my-posh.json
 scoop bucket add extras
-scoop install terminal-icons
+scoop install terminal-icons neovim fzf
+
 Install-Module PSReadLine
 Install-Module -Name z
-Install-Module -Name PSFzf
+Install-Module -Name PSFzf -Scope CurrentUser -Force
+Install-Module -Name posh-git
+Install-Module -Name oh-my-posh
 
+Get-PoshThemes
+oh-my-posh init pwsh --config 'C:\Users\<username>\AppData\Local\Programs\oh-my-posh\themes\catppuccin.omp.json' | Invoke-Expression
+
+
+# Assuming you're in: C:\Users\<yourusername>
+mkdir .config/powershell
+# Copy user_profile.ps1 from repo\.config\powershell to C:\Users\<yourusername>\.config\powershell
+
+echo '. $env:USERPROFILE\.config\powershell\user_profile.ps1' > $PROFILE.CurrentUserCurrentHost
 ```
