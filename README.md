@@ -2,12 +2,12 @@
 
 ## Contents
 
--   Pre-reqs
+-   Optionals
 -   Powershell
 
-## Pre Reqs
+## Optionals
 
--   [Nerd Fonts - Hack.zip - All of em](https://github.com/ryanoasis/nerd-fonts/releases/tag/v2.3.3)
+-   [Nerd Fonts - Hack.zip - Install all of em](https://github.com/ryanoasis/nerd-fonts/releases/tag/v2.3.3)
 
 ## Windows Terminal
 
@@ -29,14 +29,17 @@
 Install commands in order of the resources listed above
 
 ```pwsh
+# Install pwsh 7
 winget install --id Microsoft.Powershell --source winget
 
+# Install scoop
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
 irm get.scoop.sh | iex
 
+# Install tools
 scoop install https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/oh-my-posh.json
 scoop bucket add extras
-scoop install terminal-icons neovim fzf
+scoop install terminal-icons neovim fzf nvm
 
 Install-Module PSReadLine
 Install-Module -Name z
@@ -44,13 +47,14 @@ Install-Module -Name PSFzf -Scope CurrentUser -Force
 Install-Module -Name posh-git
 Install-Module -Name oh-my-posh
 
+# Set Posh theme
 Get-PoshThemes
-oh-my-posh init pwsh --config 'C:\Users\<username>\AppData\Local\Programs\oh-my-posh\themes\catppuccin.omp.json' | Invoke-Expression
+oh-my-posh init pwsh --config "$env:USERPROFILE\AppData\Local\Programs\oh-my-posh\themes\catppuccin.omp.json" | Invoke-Expression
 
-
-# Assuming you're in: C:\Users\<yourusername>
+cd $env:USERPROFILE\
 mkdir .config/powershell
 # Copy user_profile.ps1 from repo\.config\powershell to C:\Users\<yourusername>\.config\powershell
 
+# Update profile to call custom userprofile
 echo '. $env:USERPROFILE\.config\powershell\user_profile.ps1' > $PROFILE.CurrentUserCurrentHost
 ```
