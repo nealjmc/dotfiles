@@ -58,3 +58,9 @@ mkdir .config/powershell
 # Update profile to call custom userprofile
 echo '. $env:USERPROFILE\.config\powershell\user_profile.ps1' > $PROFILE.CurrentUserCurrentHost
 ```
+
+```pwsh
+# Optional
+scoop bucket add supabase https://github.com/supabase/scoop-bucket.git
+scoop install supabase
+```
